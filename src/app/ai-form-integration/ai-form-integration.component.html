@@ -1,0 +1,68 @@
+<div class="row justify-content-center" *ngIf="displayTheStory == false && displayLoader == false">
+    <div class="col-md-8">
+        <h5 class="banner-dialog text-center">
+            Calling all explorers! <br>
+        </h5>
+        <p class="text-center text-secondary text-light-emphasis mt-2 mb-3">
+          
+            Ready to embark on an amazing adventure? Let's create your very own travel buddy! 
+    
+        </p>
+    </div>
+    <div class="col-md-6">
+        <div class="card border-0">
+            <div class="card-body">
+                <form (ngSubmit)="onSubmit(); promptFrm.reset()" #promptFrm="ngForm">
+                    <div class="mb-3">
+                        <label for="characterName" class="mr-1">Name</label>
+
+                        <input type="text" class="form-control border-1" id="fullName" name="fullName"
+                             [(ngModel)]="inpParams.fullName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="age" class="mr-1">Age</label>
+
+                        <input type="number" class="form-control border-1" id="age" name="age" 
+                            [(ngModel)]="inpParams.age" required>
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="destination" class="mr-1">I am travelling to</label>
+
+                        <input type="text" class="form-control border-1" id="destination" name="destination"
+                             [(ngModel)]="inpParams.destination" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="about" class="mr-1">Tell me a story about</label>
+                        <textarea type="text" class="form-control border-1" id="about" name="about"
+                        [(ngModel)]="inpParams.about" required></textarea>
+                        
+                    </div>
+                    
+                    <button class="btn btn-outline-primary w-100" [disabled]="promptFrm.invalid" type="submit">Generate Story</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-center" *ngIf="displayTheStory == true && displayLoader == false">
+    <h5 class="banner-dialog text-center">
+        Enjoy your story! <br>
+    </h5>
+    <div class="card border-0">
+        <div class="card-body">
+            <div *ngFor="let data of generatedStory">
+                <pre class="whitespace-break-spaces overflow-auto" style="max-height: 413px;"> {{data.response}} </pre>
+            </div>
+        </div>
+        <div class="card-footer border-0 bg-white text-end">
+            <button class="btn btn-outline-secondary mr-2" (click)="goBackToMain()">Back</button>
+            <button class="btn btn-outline-primary" (click)="displayTheStory = false" >New Story</button>
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-center" *ngIf="displayLoader == true">
+    <img class="img-fluid absolute m-auto inset-x-0 inset-y-0" style="width: 100px;" src="../../assets/images/loader.gif">
+</div>
