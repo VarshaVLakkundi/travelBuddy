@@ -15,6 +15,8 @@ Welcome to Travel Buddy, an interactive story app for children! This prototype u
 * **CSS** : Tailwind CSS
 * **Bootstrap**
 * **AI**: OpenAI API
+* **OpenAI Model**: gpt-3.5-turbo
+  
 
 **Getting Started**
 * Clone the repository
