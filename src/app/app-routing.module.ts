@@ -14,13 +14,14 @@ const routes: Routes = [
   },
   { path: 'aiForm', loadChildren: () => import('./ai-form-integration/ai-form-integration.module').then(m => m.AiFormIntegrationModule) },
   {
-    path: '**',
-    redirectTo: '/journey'
+    path: '',
+    redirectTo: 'journey',
+    pathMatch: 'full'
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
