@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiKey: 'YOUR_OPENAI_API_KEY'
+    apiKey: 'YOUR_API_KEY'
 };
